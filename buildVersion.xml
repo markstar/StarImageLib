@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project name="StarImageLib_BuildVersion" default="displayVersion">
+
+	<target name="incrementMajor">
+		<antcall target="checkForDefaults"/>
+		<propertyfile file="build.version">
+			<entry key="major" type="int" default="0" operation="+"/>
+		</propertyfile>
+		<property file="build.version"/>
+		<echo message="Incremented to version ${major}.${minor}.${build}"/>
+	</target>
+
+	<target name="incrementMinor">
+		<antcall target="checkForDefaults"/>
+		<propertyfile file="build.version">
+			<entry key="minor" type="int" default="0" operation="+"/>
+		</propertyfile>
+		<property file="build.version"/>
+		<echo message="Incremented to version ${major}.${minor}.${build}"/>
+	</target>
+
+	<target name="incrementBuild">
+		<antcall target="checkForDefaults"/>
+		<propertyfile file="build.version">
+			<entry key="build" type="int" default="0" operation="+"/>
+		</propertyfile>
+		<property file="build.version"/>
+		<echo message="Incremented to version ${major}.${minor}.${build}"/>
+	</target>
+
+	<target name="displayVersion">
+		<antcall target="checkForDefaults"/>
+		<property file="build.version"/>
+		<echo message="Version is currently ${major}.${minor}.${build}"/>
+	</target>
+
+	<target name="checkForDefaults">
+		<propertyfile file="build.version">
+			<entry key="major" type="int" default="0"/>
+			<entry key="minor" type="int" default="0"/>
+			<entry key="build" type="int" default="0"/>
+		</propertyfile>
+	</target>
+
+</project>
