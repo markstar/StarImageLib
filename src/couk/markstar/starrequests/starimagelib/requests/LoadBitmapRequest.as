@@ -29,7 +29,7 @@ package couk.markstar.starrequests.starimagelib.requests
 			
 			super();
 			
-			_completedSignal = new Signal( Bitmap );
+			_completed = new Signal( Bitmap );
 			
 			_loader = new Loader();
 			_loader.contentLoaderInfo.addEventListener( ProgressEvent.PROGRESS, progressListener );
@@ -48,9 +48,9 @@ package couk.markstar.starrequests.starimagelib.requests
 		   }
 		   </listing>
 		 */
-		override public function get completedSignal():ISignal
+		override public function get completed():ISignal
 		{
-			return super.completedSignal;
+			return super.completed;
 		}
 		
 		/**
@@ -92,7 +92,7 @@ package couk.markstar.starrequests.starimagelib.requests
 		 */
 		protected function progressListener( e:ProgressEvent ):void
 		{
-			_progressSignal.dispatch( e.bytesLoaded / e.bytesTotal );
+			_progress.dispatch( e.bytesLoaded / e.bytesTotal );
 		}
 		
 		/**
@@ -100,9 +100,9 @@ package couk.markstar.starrequests.starimagelib.requests
 		 */
 		protected function completeListener( e:Event ):void
 		{
-			_progressSignal.dispatch( 1 );
+			_progress.dispatch( 1 );
 			
-			_completedSignal.dispatch( Bitmap( _loader.content ) );
+			_completed.dispatch( Bitmap( _loader.content ) );
 			
 			cleanup();
 		}
@@ -112,7 +112,7 @@ package couk.markstar.starrequests.starimagelib.requests
 		 */
 		protected function ioErrorListener( e:IOErrorEvent ):void
 		{
-			failed( e.text );
+			dispatchFailed( e.text );
 		}
 	}
 }

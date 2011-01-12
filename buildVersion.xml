@@ -7,7 +7,7 @@
 			<entry key="major" type="int" default="0" operation="+"/>
 		</propertyfile>
 		<property file="build.version"/>
-		<echo message="Incremented to version ${major}.${minor}.${build}"/>
+		<echo message="Incremented to version ${major}.${minor}"/>
 	</target>
 
 	<target name="incrementMinor">
@@ -16,29 +16,19 @@
 			<entry key="minor" type="int" default="0" operation="+"/>
 		</propertyfile>
 		<property file="build.version"/>
-		<echo message="Incremented to version ${major}.${minor}.${build}"/>
-	</target>
-
-	<target name="incrementBuild">
-		<antcall target="checkForDefaults"/>
-		<propertyfile file="build.version">
-			<entry key="build" type="int" default="0" operation="+"/>
-		</propertyfile>
-		<property file="build.version"/>
-		<echo message="Incremented to version ${major}.${minor}.${build}"/>
+		<echo message="Incremented to version ${major}.${minor}"/>
 	</target>
 
 	<target name="displayVersion">
 		<antcall target="checkForDefaults"/>
 		<property file="build.version"/>
-		<echo message="Version is currently ${major}.${minor}.${build}"/>
+		<echo message="Version is currently ${major}.${minor}"/>
 	</target>
 
 	<target name="checkForDefaults">
 		<propertyfile file="build.version">
 			<entry key="major" type="int" default="0"/>
 			<entry key="minor" type="int" default="0"/>
-			<entry key="build" type="int" default="0"/>
 		</propertyfile>
 	</target>
 

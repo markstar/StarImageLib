@@ -36,7 +36,7 @@ package couk.markstar.starrequests.starimagelib.requests
 			
 			super();
 			
-			_completedSignal = new Signal( BitmapData );
+			_completed = new Signal( BitmapData );
 		}
 		
 		/**
@@ -50,9 +50,9 @@ package couk.markstar.starrequests.starimagelib.requests
 		   }
 		   </listing>
 		 */
-		override public function get completedSignal():ISignal
+		override public function get completed():ISignal
 		{
-			return super.completedSignal;
+			return super.completed;
 		}
 		
 		/**
@@ -81,11 +81,11 @@ package couk.markstar.starrequests.starimagelib.requests
 		 */
 		protected function resampleBitmapData():void
 		{
-			_progressSignal.dispatch( 1 );
+			_progress.dispatch( 1 );
 			
 			if( _ratio >= 1 )
 			{
-				_completedSignal.dispatch( resizeBitmapData( _bitmapData, _ratio ) );
+				_completed.dispatch( resizeBitmapData( _bitmapData, _ratio ) );
 			}
 			else
 			{
@@ -106,7 +106,7 @@ package couk.markstar.starrequests.starimagelib.requests
 					}
 				} while( appliedRatio != _ratio );
 				
-				_completedSignal.dispatch( bitmapData );
+				_completed.dispatch( bitmapData );
 			}
 			
 			cleanup();

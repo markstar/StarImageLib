@@ -35,7 +35,7 @@ package couk.markstar.starrequests.starimagelib.requests
 			
 			super();
 			
-			_completedSignal = new Signal( ByteArray );
+			_completed = new Signal( ByteArray );
 		}
 		
 		/**
@@ -49,9 +49,9 @@ package couk.markstar.starrequests.starimagelib.requests
 		   }
 		   </listing>
 		 */
-		override public function get completedSignal():ISignal
+		override public function get completed():ISignal
 		{
-			return super.completedSignal;
+			return super.completed;
 		}
 		
 		/**
@@ -97,8 +97,8 @@ package couk.markstar.starrequests.starimagelib.requests
 		 */
 		private function encodingCompleteListener( byteArray:ByteArray ):void
 		{
-			_progressSignal.dispatch( 1 );
-			_completedSignal.dispatch( byteArray );
+			_progress.dispatch( 1 );
+			_completed.dispatch( byteArray );
 			
 			cleanup();
 		}

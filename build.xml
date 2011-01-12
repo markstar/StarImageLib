@@ -43,7 +43,7 @@
 
 	<target name="compile">
 		<property file="build.version"/>
-		<compc output="${OUTPUT_DIR}/StarImageLib${major}.${minor}.${build}.swc" include-classes="${CLASSES}">
+		<compc output="${OUTPUT_DIR}/StarImageLib${major}.${minor}.swc" include-classes="${CLASSES}">
 			<source-path path-element="${SOURCE_DIR}"/>
 			<runtime-shared-library-path path-element="${FLEX_HOME}/frameworks/libs/textLayout.swc">
 				<url rsl-url="http://fpdownload.adobe.com/pub/swz/tlf/1.1.0.604/textLayout_1.1.0.604.swz"
